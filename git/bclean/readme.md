@@ -6,16 +6,35 @@ Script pensado para limpar branch's locais que não estão sendo mais usada.
 Vamos criar um executável, neste caso para MacOs.
 > Quem puder fazer para os demais sistemas operacionais, agradeço.
 
-Primeiro vamos instalar o pacote `cx_Freeze` responsável por criar o executável.
+Primeiro vamos instalar o pacote `PyInstaller` responsável por criar o executável.
 
 ```zsh
-pip3 install cx_Freeze
+pip3 install pyinstaller
 ``` 
 
 Agora vamos criar o executável.
 
 ```zsh
-python3 setup.py build
+pyinstaller ./src/bclean.py 
+```
+
+Vamos agora alterar a permissão do arquivo para que possamos executar.
+
+```zsh
+chmod 755 ./dist/bclean/bclean
+```
+
+Precisamos agora mover o arquivo para uma pasta que esteja no PATH do sistema, para que possamos executar de qualquer lugar.
+
+```zsh
+mv ./dist/bclean/bclean /usr/local/bin
+```
+ou
+
+Adicionar ao PATH do sistema a pasta onde o executável foi criado.
+
+```zsh
+export PATH=$PATH:/path/to/bclean
 ```
 
 
